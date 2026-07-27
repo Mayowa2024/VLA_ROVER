@@ -1,0 +1,22 @@
+# Work that can be completed from home
+
+- [x] ROS 2 package structure
+- [x] Task instruction publisher
+- [x] Safety clipping and stale-command watchdog
+- [x] Fake odometry for software tests
+- [x] Mock differential/skid-steer motor conversion
+- [x] Raw episode frame recorder
+- [x] Episode integrity checker
+- [x] Identify actual teleoperation data source: UDP JSON
+- [x] Write UDP teleoperation-to-ROS adapter
+- [x] Split mock testing from the opt-in serial motor driver
+- [ ] Identify motor-controller protocol
+- [ ] Bench-confirm serial prefix, channel order, direction and gain
+- [ ] Test serial disconnect and controller-side watchdog behavior
+- [ ] Install and test a physical emergency stop
+- [x] Connect two wheel encoders through the Arduino Nano
+- [x] Add real encoder odometry with an optional fake fallback
+- [ ] Calibrate encoder directions, counts, wheel diameter and track width
+- [ ] Bench-test encoder disconnect, reset and timeout recovery
+- [ ] Pin LeRobot version and write final converter
+- [ ] Fine-tune SmolVLA

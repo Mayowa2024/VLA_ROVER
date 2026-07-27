@@ -1,0 +1,31 @@
+# Colcon output when commands are run from the repository root.
+/build/
+/install/
+/log/
+
+# Colcon output inside the ROS 2 workspace.
+rover_vla_ws/build/
+rover_vla_ws/install/
+rover_vla_ws/log/
+
+# Python caches.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+.coverage
+htmlcov/
+
+# Local secrets and environment overrides.
+.env
+.env.*
+!.env.example
+
+# Local datasets and ROS bag recordings.
+/rover_vla_data/
+*.bag
+*.db3
+*.mcap
+rosbag2_*/

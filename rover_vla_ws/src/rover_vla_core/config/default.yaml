@@ -1,0 +1,98 @@
+instruction_publisher:
+  ros__parameters:
+    instruction: "Drive to the blue cone"
+    topic: "/vla/instruction"
+
+safety_filter:
+  ros__parameters:
+    input_topic: "/vla/raw_cmd_vel"
+    output_topic: "/cmd_vel"
+    emergency_stop_topic: "/vla/emergency_stop"
+    max_linear_mps: 0.10
+    max_angular_rps: 0.40
+    allow_reverse: false
+    timeout_sec: 0.50
+    publish_rate_hz: 20.0
+
+fake_odom:
+  ros__parameters:
+    cmd_topic: "/cmd_vel"
+    odom_topic: "/odom"
+    state_topic: "/vla/state"
+    odom_frame: "odom"
+    base_frame: "base_link"
+    publish_tf: false
+    rate_hz: 30.0
+
+encoder_odom:
+  ros__parameters:
+    serial_port: "/dev/ttyUSB0"
+    baud_rate: 115200
+    counts_per_revolution: 1224.0
+    wheel_diameter_m: 0.15875
+    track_width_m: 0.352425
+    left_direction: 1.0
+    right_direction: 1.0
+    odom_topic: "/odom"
+    state_topic: "/vla/state"
+    odom_frame: "odom"
+    base_frame: "base_link"
+    publish_tf: false
+    serial_timeout_sec: 0.05
+    poll_rate_hz: 50.0
+    measurement_timeout_sec: 0.50
+    reconnect_interval_sec: 2.0
+    max_tick_jump: 4096
+    max_wheel_speed_mps: 2.0
+    warning_throttle_sec: 5.0
+    max_line_length: 128
+    max_lines_per_poll: 32
+    max_read_bytes: 4096
+
+mock_motor_driver:
+  ros__parameters:
+    cmd_topic: "/cmd_vel"
+    wheel_command_topic: "/rover/mock_wheel_command"
+    linear_scale: 1.0
+    angular_scale: 1.0
+    max_abs_command: 1.0
+
+teleop_adapter:
+  ros__parameters:
+    bind_address: "0.0.0.0"
+    port: 6001
+    buffer_size: 1024
+    poll_rate_hz: 100.0
+    command_timeout_sec: 0.50
+    output_topic: "/teleop/cmd_vel"
+    allowed_source_ip: ""
+    max_packets_per_poll: 32
+
+serial_motor_driver:
+  ros__parameters:
+    cmd_topic: "/cmd_vel"
+    serial_port: "/dev/ttyACM0"
+    baud_rate: 9600
+    serial_timeout_sec: 1.0
+    write_timeout_sec: 0.10
+    startup_delay_sec: 2.0
+    send_rate_hz: 20.0
+    command_timeout_sec: 0.50
+    command_scale: 20.0
+    max_abs_command: 255
+    invert_output: true
+    command_prefix: "000000000000000"
+
+frame_recorder:
+  ros__parameters:
+    image_topic: "/image_raw"
+    action_topic: "/teleop/cmd_vel"
+    odom_topic: "/odom"
+    instruction_topic: "/vla/instruction"
+    output_root: "~/rover_vla_data/raw"
+    episode_id: 0
+    sample_rate_hz: 10.0
+    state_source: "odom"
+    state_freshness_timeout_sec: 1.0
+    require_instruction: true
+    jpeg_quality: 92
