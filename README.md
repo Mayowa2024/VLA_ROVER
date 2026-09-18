@@ -24,17 +24,11 @@ For the currently connected Jetson, camera, Arduino and G29, go directly to
   - timestamp, episode index and frame index
 - Supports `previous_action` as a temporary software-test state source.
 
-## What must still be validated on the rover
+## What is left
 
-1. **Motor protocol and calibration**
-   - `serial_motor_driver.py` preserves the command format and steering formula
-     found in the existing script, but the prefix, left/right channel order,
-     signs and scale must be confirmed with the wheels lifted.
-2. **Encoder calibration**
-   - Confirm the effective counts per revolution, wheel diameter, track width
-     and both direction signs using measured straight and turning runs.
+1. Final fine-tuning and evaluation
+2. Recording 20 more episodes (currently have 30 recorded)
 
-Keep `mock_motor_driver.py` for tests. Never substitute it with hardware code.
 
 ## Install dependencies
 
@@ -85,6 +79,8 @@ colcon test-result --verbose
 ```
 
 ## Run the software-only stack
+
+Fake action inputs are generated
 
 ```bash
 ./scripts/run_software_test.sh "Drive to the blue cone"
